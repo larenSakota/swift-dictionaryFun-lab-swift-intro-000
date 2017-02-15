@@ -11,7 +11,7 @@
             return result
         }
         
-        name(forFlavor: "Natural Vanilla")
+        name(forFlavor: "Strawberry")
         
         
         func count(forFlavor flavor: String) -> Int {
@@ -72,11 +72,11 @@
 //            var names: String
             for (name, favorite) in favoriteFlavorsOfIceCream {
                 if name == person {
-                    if name.isEmpty {
+//                    if name.isEmpty {
                         favoriteFlavorsOfIceCream.removeValue(forKey: name)
-                    }
-                        return true
-                    } else {
+                   return true
+                } else {
+                
                         
                     }
                     
@@ -84,7 +84,7 @@
                  return false
             }
         
-        remove(person: "Jim")
+        remove(person: "Ging")
         
         
         
@@ -114,11 +114,32 @@
             if names.contains(person) {
                 return false
             } else {
-                favoriteFlavorsOfIceCream.updateValue(person, forKey: flavor)
+                favoriteFlavorsOfIceCream.updateValue(flavor, forKey: person)
             }
             return true
                 }
 
+
+        add(person: "Sheilla", flavor: "Vanilla")
         
-        add(person: "Sheilla", flavor: "Natural Vanilla")
+        // Question 9
+        
+        func attendeeeList() -> String {
+            var people = String()
+//            let allNames = Array(favoriteFlavorsOfIceCream.keys).sorted()
+            let sortedNameAndIce = (favoriteFlavorsOfIceCream).sorted() { $0.0 < $1.0 }
+                    
+            for (name, ice) in sortedNameAndIce {
+                people += "\(name) likes \(ice)\n"
+                
+            }
+                
+            
+            
+            
+            return people
+            
+        }
+        
+        attendeeeList()
         

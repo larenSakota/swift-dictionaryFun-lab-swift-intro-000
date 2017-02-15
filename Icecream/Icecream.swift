@@ -15,15 +15,15 @@ class Icecream {
     
     
     // 2.
-    func name(forFlavor flavor: String) -> [String] {
+    func name(forFlavor: String) -> [String] {
         var result = [String]()
         for (person, favorite) in favoriteFlavorsOfIceCream {
-            if favorite == flavor {
-            result.append(person)
+            if favorite == forFlavor {
+                result.append(person)
+            }
         }
-    }
         return result
-}
+    }
 
     
     
@@ -91,9 +91,8 @@ class Icecream {
     func remove(person: String) -> Bool {
         for (name, favorite) in favoriteFlavorsOfIceCream {
             if name == person {
-                if name.isEmpty {
                     favoriteFlavorsOfIceCream.removeValue(forKey: name)
-                }
+                
                 return true
             } else {
                 
@@ -129,7 +128,6 @@ class Icecream {
     // 8.
     
     func add(person: String, flavor: String) -> Bool {
-        var cream = [String]()
         var names = [String]()
         for name in favoriteFlavorsOfIceCream.keys {
             names.append(name)
@@ -138,7 +136,7 @@ class Icecream {
         if names.contains(person) {
             return false
         } else {
-            favoriteFlavorsOfIceCream.updateValue(person, forKey: flavor)
+            favoriteFlavorsOfIceCream.updateValue(flavor, forKey: person)
         }
         return true
     }
@@ -151,7 +149,22 @@ class Icecream {
     
     // 9.
     
-    
+    func attendeeeList() -> String {
+        var people = String()
+        //            let allNames = Array(favoriteFlavorsOfIceCream.keys).sorted()
+        let sortedNameAndIce = (favoriteFlavorsOfIceCream).sorted() { $0.0 < $1.0 }
+        
+        for (name, ice) in sortedNameAndIce {
+            people += "\(name) likes \(ice)\n"
+            
+        }
+        
+        
+        
+        
+        return people
+        
+    }
     
     
     
